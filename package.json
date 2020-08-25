@@ -14,7 +14,8 @@
     "ex8": "yarn ts-node memoize.ts",
     "ex9": "yarn ts-node groupBY.ts",
     "ex10": "yarn ts-node map.ts",
-    "ex11": "yarn ts-node filter.ts"
+    "ex11": "yarn ts-node filter.ts",
+    "ex12": "yarn ts-node reduce.ts"
   },
   "dependencies": {
     "ts-node": "^9.0.0",
