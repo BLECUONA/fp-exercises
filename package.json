@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "ex1": "yarn ts-node deepArrayInfos.ts",
-    "ex2": "yarn ts-node create.ts"
+    "ex2": "yarn ts-node create.ts",
+    "ex3": "yarn ts-node add.ts"
   },
   "dependencies": {
     "ts-node": "^9.0.0",
