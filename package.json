@@ -11,7 +11,8 @@
     "ex5": "yarn ts-node compose.ts",
     "ex6": "yarn ts-node composeN.ts",
     "ex7": "yarn ts-node partial.ts",
-    "ex8": "yarn ts-node memoize.ts"
+    "ex8": "yarn ts-node memoize.ts",
+    "ex9": "yarn ts-node groupBY.ts"
   },
   "dependencies": {
     "ts-node": "^9.0.0",
