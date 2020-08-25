@@ -57,6 +57,51 @@ const _recursiveRowDepth = (
 };
 //#endregion DEPTH
 
+//#region MAX
+const arrayMax = (input: DeepNumberArray[]) => {
+  let res = 0;
+
+  input.forEach((element) => {
+    const increaseMax = _memoizeMax();
+
+    const elementMax = _rowMax(element, increaseMax);
+    if (elementMax > res) res = elementMax;
+  });
+
+  return res;
+};
+
+const _rowMax = (
+  input: DeepNumberArray,
+  memo: (value: DeepNumberArray) => number
+): number => {
+  if (Array.isArray(input)) return _recursiveMax(input, memo);
+  else return memo(input);
+};
+
+const _memoizeMax = () => {
+  let maxRes = 0;
+  return (value: DeepNumberArray): number => {
+    if (typeof value === "number" && value > maxRes) maxRes = value;
+    return maxRes;
+  };
+};
+
+const _recursiveMax = (
+  input: DeepNumberArray[],
+  memo: (value: DeepNumberArray) => number
+) => {
+  let max = 0;
+  input.forEach((element) => {
+    memo(element);
+    const res = _rowMax(element, memo);
+    if (res > max) max = res;
+  });
+  return max;
+};
+
+//#region MAX
+
 const array = [1, [[2], 3], [4], 5, [6, 42, [[86], [[12]], 1337]], 1];
 
 // sum
@@ -66,3 +111,7 @@ console.log(`Sum is ${sumResult}`);
 // depth
 const depthResult = arrayDepth(array);
 console.log(`Depth is ${depthResult}`);
+
+// max
+const maxResult = arrayMax(array);
+console.log(`Max is ${maxResult}`);
