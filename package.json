@@ -8,7 +8,8 @@
     "ex2": "yarn ts-node create.ts",
     "ex3": "yarn ts-node add.ts",
     "ex4": "yarn ts-node sub.ts",
-    "ex5": "yarn ts-node compose.ts"
+    "ex5": "yarn ts-node compose.ts",
+    "ex6": "yarn ts-node composeN.ts"
   },
   "dependencies": {
     "ts-node": "^9.0.0",
