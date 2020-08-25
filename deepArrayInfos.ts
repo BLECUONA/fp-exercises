@@ -1,5 +1,6 @@
 type DeepNumberArray = number | DeepNumberArray[];
 
+//#region SUM
 const sum = (input: DeepNumberArray) => {
   let res = 0;
   if (Array.isArray(input)) {
@@ -11,41 +12,50 @@ const sum = (input: DeepNumberArray) => {
     return input;
   }
 };
+//#endregion SUM
 
-const everyDepth = (input: any[]) => {
+//#region DEPTH
+const arrayDepth = (input: DeepNumberArray[]) => {
   let res = 0;
 
   input.forEach((element) => {
-    let increaseDepth = memoizeDepth();
+    const increaseDepth = _memoizeDepth();
 
-    const elementDepth = depth(element, increaseDepth);
+    const elementDepth = _rowDepth(element, increaseDepth);
     if (elementDepth > res) res = elementDepth;
   });
 
   return res;
 };
 
-const depth = (
-  input: DeepNumberArray,
-  memo: (input: DeepNumberArray) => number
-) => {
-  if (Array.isArray(input)) {
-    let deep = 0;
-    input.forEach((element) => {
-      memo(element);
-      const temp = depth(element, memo);
-      if (temp > deep) deep = temp;
-    });
-    return deep;
-  } else return memo(input);
-};
-
-const memoizeDepth = () => {
+const _memoizeDepth = () => {
   let depthRes = 0;
 
   return (input: DeepNumberArray) =>
     Array.isArray(input) ? (depthRes += 1) : depthRes;
 };
+
+const _rowDepth = (
+  input: DeepNumberArray,
+  memo: (input: DeepNumberArray) => number
+) => {
+  if (Array.isArray(input)) return _recursiveRowDepth(input, memo);
+  else return memo(input);
+};
+
+const _recursiveRowDepth = (
+  input: DeepNumberArray[],
+  memo: (input: DeepNumberArray) => number
+) => {
+  let deep = 0;
+  input.forEach((element) => {
+    memo(element);
+    const res = _rowDepth(element, memo);
+    if (res > deep) deep = res;
+  });
+  return deep;
+};
+//#endregion DEPTH
 
 const array = [1, [[2], 3], [4], 5, [6, 42, [[86], [[12]], 1337]], 1];
 
@@ -54,5 +64,5 @@ const sumResult = sum(array);
 console.log(`Sum is ${sumResult}`);
 
 // depth
-const depthResult = everyDepth(array);
+const depthResult = arrayDepth(array);
 console.log(`Depth is ${depthResult}`);
