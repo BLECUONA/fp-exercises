@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "ex1": "yarn ts-node deepArrayInfos.ts"
+    "ex1": "yarn ts-node deepArrayInfos.ts",
+    "ex2": "yarn ts-node create.ts"
   },
   "dependencies": {
     "ts-node": "^9.0.0",
