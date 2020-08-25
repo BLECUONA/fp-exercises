@@ -10,7 +10,8 @@
     "ex4": "yarn ts-node sub.ts",
     "ex5": "yarn ts-node compose.ts",
     "ex6": "yarn ts-node composeN.ts",
-    "ex7": "yarn ts-node partial.ts"
+    "ex7": "yarn ts-node partial.ts",
+    "ex8": "yarn ts-node memoize.ts"
   },
   "dependencies": {
     "ts-node": "^9.0.0",
