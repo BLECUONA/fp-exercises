@@ -6,7 +6,8 @@
   "scripts": {
     "ex1": "yarn ts-node deepArrayInfos.ts",
     "ex2": "yarn ts-node create.ts",
-    "ex3": "yarn ts-node add.ts"
+    "ex3": "yarn ts-node add.ts",
+    "ex4": "yarn ts-node sub.ts"
   },
   "dependencies": {
     "ts-node": "^9.0.0",
